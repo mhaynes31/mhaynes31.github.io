@@ -58,7 +58,7 @@
     	request.onload = function() {
 
         	var data = JSON.parse(request.responseText);
-			cit5students = data.filter(getMeal)   // filter data for selected meal
+			cit5students = data.filter(getMajor)   // filter data for selected meal
 		
 			function getMajor(item) {
             	return item.major == selected_major;

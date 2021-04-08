@@ -51,7 +51,7 @@
   <!-- application ajax code -->
 <script>
 
-	function getData(selected_meal) {
+	function getData(major) {
 		var request = new XMLHttpRequest();
     	request.open('GET', 'cit5students.json');     // open the request
 
@@ -61,14 +61,14 @@
 			cit5students = data.filter(getMajor)   // filter data for selected meal
 		
 			function getMajor(item) {
-            	return item.major == selected_major;
+            	return item.major == major;
         	}
 
         	if (request.status == 200) {
               	var templateText = document.getElementById('tableTemplate').innerHTML;
              	var compiledTemplateText = Handlebars.compile(templateText);   // get and compile template code
               	
-              	compiledHtml = compiledTemplateText({ rows: major_items })      // apply data to template
+              	compiledHtml = compiledTemplateText({ rows: majors })      // apply data to template
               	document.getElementById('majorTable').innerHTML = compiledHtml; 	
        	 	}
         	else {

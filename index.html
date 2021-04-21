@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head><title>cars 4 sale</title>
+<html><head><title>Grade Point Averages</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -16,8 +16,8 @@
     </div>
     <div>
        <ul class="nav navbar-nav">
-           <li class="active"><a href="index.html">Welcome</a></li>
-           <li><a href="all_cars.html">All the Cars</a></li>
+           <li class="active"><a href="index.html">All Advisees</a></li>
+           <li><a href="all_cars.html">Grade Point Averages</a></li>
        </ul>
     </div>
 
@@ -25,48 +25,32 @@
 
 <div ng-controller = "homeCtrl">
 
-	<h2>Welcome to Metro Cars For Sale</h2>
-  	<p>We offer up a list of used cars for sale as listed in the following local dealerships</p>
-    
-    <p>Today is: {{date}}</p>      
-    
+	<h2>Advisees</h2>
+  	<     
+		  <p><input type='text' ng-model='search_text' > Enter Search text</p>
           <table class="table table-bordered table-striped">
           	<tr>
-             	<th>Dealer</th>
-              	<th>Address</th>
-              	<th>Phone</th>
+             	<th>sid</th>
+              	<th>last name</th>
+              	<th>first name</th>
+				<th>credit hrs</th>
+				<th>gpa points</th>
+				<th>major</th>
           	</tr>
-          	<tr> <td>Joe Smith Cars & Trucks</td><td>123 Automall Rd.</td><td>555-2345</td></tr>
-            <tr> <td>Sue Green Motorworld</td><td>1888 South St.</td><td>555-2345</td></tr>
-			<tr> <td>Dave Jones Chrysler</td>
-			<td>30301 Brook Rd.</td><td>555-3456</td></tr>
-			<tr> <td>Kim Ivanov Quality Cars</td><td>4334 Yanovich Blvd.</td><td>555-4567</td></tr>
-			<tr> <td>Max Johnson Chevrolet</td><td>55221 Johnsonville Rd.</td><td>555-4321</td></tr>
-			<tr> <td>Linda Silver VDub</td><td>5491 Main Ave.</td><td>555-5432</td></tr>
-			<tr> <td>Stu Mar Autorama</td><td>14 Baker Blvd.</td><td>555-6543</td></tr>
-			<tr> <td>Moe Hernandez Motors</td><td>92917 Stacy Rd.</td><td>555-3251</td></tr>
+          	<tr ng-repeat = "gpa in gpas | filter:search_text ">
+                  <td>{{gpa.sid}}</td>
+                  <td>{{gpa.last name}}</td>
+                  <td>{{gpa.first name}}</td>
+                  <td>{{gpa.credit hrs}}</td>
+                  <td>{{gpa.gpa points}}</td>
+                  <td>{{gpa.major}}</td>
+                  <
+              </tr>
      	</table>
         
-        <p>All dealerships offer:
-        	<ol class='class="list-group"'>
-        		<li class="list-group-item">Friendly Service</li>
-            	<li class="list-group-item">On-lot Financing</li>
-           	 	<li class="list-group-item">Extended Warrantees</li>
-       		</ol>
-        </p>
         
-</div>   <!-- end homeCtrl -->
-</div>   <!-- end class= 'container' -->
+        
+</div>  
+</div>   
 
-<script>
-var app = angular.module('homeApp', []);
-
-app.controller('homeCtrl', function($scope, $http) {
-  
-     var today = new Date();  /* get today's date */
-     $scope.date= today.toDateString()
-	   
-});
-		  
-</script>
 </body></html>

@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html><head><title>cars 4 masonhaynes</title>
-<link rel="stylesheet"     href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<html><head><title>cars 4 sale</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"></script> 
- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-route.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"></script> 
 
 </head>
-<body>
+<body ng-app = "homeApp">
 
 <div class="container">
 <nav class="navbar navbar-inverse">
@@ -17,46 +16,51 @@
     </div>
     <div>
        <ul class="nav navbar-nav">
-           <li class="active"><a href="#home">Welcome</a></li>
-           <li><a href="#all_cars">All the Cars</a></li>
+           <li class="active"><a href="index.html">Welcome</a></li>
+           <li><a href="all_cars.html">All the Cars</a></li>
        </ul>
     </div>
 
 </nav>    <!-- end nav-bar -->
 
-<div ng-app = "carsApp">
+<div ng-controller = "homeCtrl">
 
-
-     <div ng-view></div>    <!-- partial pages substituted here -->
-  
-
-</div>   <!-- end carsApp -->
+	<h2>Welcome to Metro Cars For Sale</h2>
+  	<p>We offer up a list of used cars for sale as listed in the following local dealerships</p>
+    
+    <p>Today is: {{date}}</p>      
+    
+          <table class="table table-bordered table-striped">
+          	<tr>
+             	<th>Dealer</th>
+              	<th>Address</th>
+              	<th>Phone</th>
+          	</tr>
+          	<tr> <td>Joe Smith Cars & Trucks</td><td>123 Automall Rd.</td><td>555-2345</td></tr>
+            <tr> <td>Sue Green Motorworld</td><td>1888 South St.</td><td>555-2345</td></tr>
+			<tr> <td>Dave Jones Chrysler</td>
+			<td>30301 Brook Rd.</td><td>555-3456</td></tr>
+			<tr> <td>Kim Ivanov Quality Cars</td><td>4334 Yanovich Blvd.</td><td>555-4567</td></tr>
+			<tr> <td>Max Johnson Chevrolet</td><td>55221 Johnsonville Rd.</td><td>555-4321</td></tr>
+			<tr> <td>Linda Silver VDub</td><td>5491 Main Ave.</td><td>555-5432</td></tr>
+			<tr> <td>Stu Mar Autorama</td><td>14 Baker Blvd.</td><td>555-6543</td></tr>
+			<tr> <td>Moe Hernandez Motors</td><td>92917 Stacy Rd.</td><td>555-3251</td></tr>
+     	</table>
+        
+        <p>All dealerships offer:
+        	<ol class='class="list-group"'>
+        		<li class="list-group-item">Friendly Service</li>
+            	<li class="list-group-item">On-lot Financing</li>
+           	 	<li class="list-group-item">Extended Warrantees</li>
+       		</ol>
+        </p>
+        
+</div>   <!-- end homeCtrl -->
 </div>   <!-- end class= 'container' -->
 
 <script>
-var app = angular.module('carsApp', ['ngRoute']);
+var app = angular.module('homeApp', []);
 
-app.config(function($routeProvider) {
-    $routeProvider 
-      .when('/', {
-          templateUrl : 'partials/home.html',    // route for the home page
-          controller : 'homeCtrl'
-      })
-      .when('/home', {
-          templateUrl : 'partials/home.html',
-          controller : 'homeCtrl'
-      })
-      .when('/all_cars', {
-          templateUrl : 'partials/all_cars.html',    // show all cars
-          controller : 'allCtrl'
-      })
-      .otherwise({
-          redirectTo: 'partials/home.html'        // any other URL goes to home
-      });
-});
-
-
-          /*   a controller for each page  */
 app.controller('homeCtrl', function($scope, $http) {
   
      var today = new Date();  /* get today's date */
@@ -64,15 +68,5 @@ app.controller('homeCtrl', function($scope, $http) {
 	   
 });
 		  
-		  
-app.controller('allCtrl', function($scope, $http) {
-    
-   $http.get("cars.json")          // get all the cars table
-     .then(function (response) {
-	    $scope.cars = response.data;  
-     });
-
-});
-
 </script>
 </body></html>

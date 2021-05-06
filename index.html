@@ -37,15 +37,35 @@
 				<th>gpa points</th>
 				<th>major</th>
           	</tr>
-          	<tr> <td>1121</td><td>Rita</td><td>Solertan</td><td>23</td><td>48</td><td>CIT</td></tr>
-			<tr> <td>1398</td><td>Rivika</td><td>Alexander</td><td>41</td><td>103</td><td>EET</td></tr>
-            <tr> <td>1498</td><td>Ned</td><td>Ramos</td><td>28</td><td>100</td><td>BUS</td></tr>
-              </tr>
+          	<tr ng-repeat="i in items | filter: menu">
+				<td>{{ student.sid }}</td>
+				<td>{{ student.last_name }}</td>
+				<td>{{ student.first_name }}</td>
+				<td>{{ student.credit_hrs ))</td>
+				<td>{{ student.gpa_points }}</td>
+				<td>{{ student.major }}</td>
+			</tr>
      	</table>
         
         
         
 </div>  
 </div>   
+<script>
+var app = angular.module('homeApp', []);
+
+app.controller('homeCtrl', function($scope, $http) {
+   
+   $scope.text = function(student) {
+	   
+	   $scope.student = students;
+       var url = "students.json";      
+	   
+       $http.get(url).then(function (response) {
+		   $scope.students = response.data;  // assign all items
+       });    //end $http
+   };        // end getMenu
+});          // end controller
+</script>
 
 </body></html>

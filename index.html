@@ -37,13 +37,13 @@
 				<th>gpa points</th>
 				<th>major</th>
           	</tr>
-          	<tr ng-repeat = "gpa in gpas | filter:search_text ">
-                  <td>{{gpa.sid}}</td>
-                  <td>{{gpa.last name}}</td>
-                  <td>{{gpa.first name}}</td>
-                  <td>{{gpa.credit hrs}}</td>
-                  <td>{{gpa.gpa points}}</td>
-                  <td>{{gpa.major}}</td>
+          	<tr ng-repeat = "student in students | filter:search_text ">
+                  <td>{{student.sid}}</td>
+                  <td>{{student.last_name}}</td>
+                  <td>{{student.first_name}}</td>
+                  <td>{{student.credit_hrs}}</td>
+                  <td>{{student.gpa_points}}</td>
+                  <td>{{student.major}}</td>
                   <
               </tr>
      	</table>
